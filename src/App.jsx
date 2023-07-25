@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import IncomePage from "./pages/income";
 import ExpensePage from "./pages/expense";
+import HomePage from "./pages/home";
 
 function App() {
   const [balance, setBalance] = useState(0);
@@ -12,10 +13,12 @@ function App() {
         <nav className="mb-4">
           <ul className="flex gap-4">
             <li>
-              <Link
-                to="/income"
-                className="text-green-400 hover:text-green-700"
-              >
+              <Link to="/" className="text-green-500 hover:text-green-700">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/income" className="text-blue-500 hover:text-blue-700">
                 Income
               </Link>
             </li>
@@ -30,6 +33,7 @@ function App() {
         <h1 className="text-xl font-bold">Balance: {balance}</h1>
 
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route
             path="/income"
             element={<IncomePage balance={balance} setBalance={setBalance} />}
